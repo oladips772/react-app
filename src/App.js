@@ -1,15 +1,19 @@
 /** @format */
-import React, { Component } from "react";
+import React from "react";
 import "./App.css";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Home from "./pages/Home";
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <h1>My React Crash Course</h1>
-      </div>
-    );
-  }
+function App() {
+  return (
+    <div>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Home />} />
+        </Routes>
+      </BrowserRouter>
+    </div>
+  );
 }
 
 export default App;
