@@ -6,3 +6,10 @@
   justify-content: center;
   height: 100vh;
 }
+
+.image {
+  height: 200px;
+  width: 200px;
+  object-fit: contain;
+  border-radius: 4px;
+}
