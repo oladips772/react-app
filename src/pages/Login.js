@@ -14,7 +14,7 @@ function Login() {
       .then((userCredential) => {
         // Signed in
         const user = userCredential.user;
-        localStorage.setItem("userInfo", user.email);
+        localStorage.setItem("userInfo", user?.email);
         navigate("/");
         alert("login successful");
         // ...
