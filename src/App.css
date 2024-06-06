@@ -1,15 +1,30 @@
 /** @format */
-.not_found {
+
+body {
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
   height: 100vh;
 }
 
-.image {
-  height: 200px;
-  width: 200px;
-  object-fit: contain;
+.login {
+  display: flex;
+  flex-direction: column;
+}
+
+input {
+  height: 40px;
+  width: 270px;
+  margin: 4px;
+  padding: 6px;
+  border-radius: 4px;
+}
+
+button {
+  height: 50px;
+  width: 280px;
+  margin: 4px;
+  cursor: pointer;
+  padding: 6px;
   border-radius: 4px;
 }

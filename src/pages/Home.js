@@ -1,13 +1,16 @@
 /** @format */
-import React, { useEffect, useLayoutEffect, useState, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Header from "../components/Header";
+import { useNavigate } from "react-router-dom";
 
 function Home() {
   const [fileChosen, setFileChosen] = useState(null);
   const [imageChosen, setImageChosen] = useState("");
   const [audioChosen, setAudioChosen] = useState("");
   const [videoChosen, setVideoChosen] = useState("");
+  const [name, setName] = useState("");
   const inputRef = useRef();
+  const navigate = useNavigate();
 
   const preview = (e) => {
     const reader = new FileReader();
@@ -31,21 +34,16 @@ function Home() {
     }
   }, [fileChosen]);
 
+  const logout = () => {
+    localStorage.removeItem("userInfo");
+    navigate("/login");
+  };
+
   return (
     <div>
-      <input type="file" onChange={(e) => preview(e)} hidden ref={inputRef} />
-      <button onClick={() => inputRef.current.click()}>Select Image</button>
+      <h1>Home screen</h1>
 
-      {imageChosen && (
-        <img src={imageChosen} alt="" srcset="" className="image" />
-      )}
-
-      {videoChosen && (
-        <video src={videoChosen} controls height={300} width={400}></video>
-      )}
-      {audioChosen && (
-        <audio src={audioChosen} controls height={300} width={400}></audio>
-      )}
+      <button onClick={logout}>logout</button>
     </div>
   );
 }
