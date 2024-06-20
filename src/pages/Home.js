@@ -18,16 +18,16 @@ function Home() {
   const docRef = collection(db, "blogs");
 
   useEffect(() => {
-    const getBlogs = async () => {
-      const querySnapshot = await getDocs(collection(db, "blogs"));
-      querySnapshot.forEach((doc) => {
-        blogs.push(doc.data());
-      });
-    };
-    getBlogs();
-  }, [db, docRef]);
+    const Queried = query(docRef);
 
-  const Queried = query(docRef, orderBy("createdAt"));
+    onSnapshot(Queried, (snapshot) => {
+      let books = [];
+      snapshot.docs.forEach((doc) => {
+        books.push(doc.data());
+      });
+      setBlogs(books);
+    });
+  }, []);
 
   return (
     <div className="home">

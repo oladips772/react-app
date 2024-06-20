@@ -21,7 +21,6 @@ function Newblog() {
     setTitle("");
     setContent("");
     setLoading(false);
-    alert("blog created successfully");
   };
 
   return (
