@@ -1,53 +1,46 @@
 /** @format */
 import React, { useState, useEffect, useRef } from "react";
 import Header from "../components/Header";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { getAuth } from "firebase/auth";
+import {
+  collection,
+  getDoc,
+  getDocs,
+  onSnapshot,
+  orderBy,
+  query,
+} from "firebase/firestore";
+import { db } from "../firebase";
 
 function Home() {
-  const user = getAuth();
-  const [fileChosen, setFileChosen] = useState(null);
-  const [imageChosen, setImageChosen] = useState("");
-  const [audioChosen, setAudioChosen] = useState("");
-  const [videoChosen, setVideoChosen] = useState("");
-  const [name, setName] = useState("");
-  const inputRef = useRef();
-  const navigate = useNavigate();
-
-  const preview = (e) => {
-    const reader = new FileReader();
-    if (e.target.files[0]) {
-      reader.readAsDataURL(e.target.files[0]);
-    }
-    reader.onload = (readerEvent) => {
-      setFileChosen(readerEvent.target.result);
-    };
-  };
+  const [blogs, setBlogs] = useState([]);
+  const docRef = collection(db, "blogs");
 
   useEffect(() => {
-    if (fileChosen?.includes("image")) {
-      setImageChosen(fileChosen);
-    }
-    if (fileChosen?.includes("video")) {
-      setVideoChosen(fileChosen);
-    }
-    if (fileChosen?.includes("audio")) {
-      setAudioChosen(fileChosen);
-    }
-  }, [fileChosen]);
+    const getBlogs = async () => {
+      const querySnapshot = await getDocs(collection(db, "blogs"));
+      querySnapshot.forEach((doc) => {
+        blogs.push(doc.data());
+      });
+    };
+    getBlogs();
+  }, [db, docRef]);
 
-  const logout = () => {
-    localStorage.removeItem("userInfo");
-    navigate("/login");
-  };
+  const Queried = query(docRef, orderBy("createdAt"));
 
   return (
-    <div>
-      <h1>Home screen</h1>
-
-      <img src={user?.currentUser?.photoURL} alt="user profile photo" />
-
-      <button onClick={logout}>logout</button>
+    <div className="home">
+      <Header />
+      <main>
+        {blogs?.map((blog, i) => (
+          <div className="blog_item" key={i}>
+            <h2>{blog?.title}</h2>
+            <p>{blog?.content}</p>
+            <span>Written by: {blog?.author}</span>
+          </div>
+        ))}
+      </main>
     </div>
   );
 }

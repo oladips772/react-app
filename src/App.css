@@ -1,9 +1,6 @@
 /** @format */
 
 body {
-  display: flex;
-  align-items: center;
-  justify-content: center;
   height: 100vh;
 }
 
@@ -13,11 +10,22 @@ body {
 }
 
 input {
-  height: 40px;
-  width: 270px;
+  height: 30px;
+  width: 400px;
   margin: 4px;
-  padding: 6px;
+  padding: 10px;
   border-radius: 4px;
+  font-size: 23px;
+}
+
+textarea {
+  height: 200px;
+  width: 400px;
+  margin: 4px;
+  padding: 10px;
+  border-radius: 4px;
+  font-size: 23px;
+  resize: none;
 }
 
 button {
@@ -27,4 +35,50 @@ button {
   cursor: pointer;
   padding: 6px;
   border-radius: 4px;
+}
+
+.logoutBtn {
+  height: 40px;
+  width: 100px;
+  margin: 4px;
+  cursor: pointer;
+  padding: 6px;
+  border-radius: 4px;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+nav a {
+  color: black;
+  text-decoration: none;
+  margin: 10px;
+  font-size: 25px;
+}
+
+main {
+  max-width: 1300px;
+  margin: 60px auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 20px;
+}
+
+main .blog_item {
+  border: 1px solid lightgray;
+  padding: 15px;
+  border-radius: 4px;
+}
+
+.newblog main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.newblog main button {
+  width: 420px;
 }

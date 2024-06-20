@@ -9,6 +9,7 @@ import NotFound from "./pages/NotFound";
 import Login from "./pages/Login";
 import PrivateRoute from "./PrivateRoute";
 import Register from "./pages/Register";
+import Newblog from "./pages/Newblog";
 
 function App() {
   return (
@@ -38,6 +39,14 @@ function App() {
             element={
               <PrivateRoute>
                 <Contact />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/newblog"
+            element={
+              <PrivateRoute>
+                <Newblog />
               </PrivateRoute>
             }
           />
