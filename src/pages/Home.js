@@ -2,8 +2,10 @@
 import React, { useState, useEffect, useRef } from "react";
 import Header from "../components/Header";
 import { useNavigate } from "react-router-dom";
+import { getAuth } from "firebase/auth";
 
 function Home() {
+  const user = getAuth();
   const [fileChosen, setFileChosen] = useState(null);
   const [imageChosen, setImageChosen] = useState("");
   const [audioChosen, setAudioChosen] = useState("");
@@ -42,6 +44,8 @@ function Home() {
   return (
     <div>
       <h1>Home screen</h1>
+
+      <img src={user?.currentUser?.photoURL} alt="user profile photo" />
 
       <button onClick={logout}>logout</button>
     </div>
