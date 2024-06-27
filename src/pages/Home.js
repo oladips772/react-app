@@ -1,24 +1,16 @@
 /** @format */
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import Header from "../components/Header";
-import { Link, useNavigate } from "react-router-dom";
-import { getAuth } from "firebase/auth";
-import {
-  collection,
-  getDoc,
-  getDocs,
-  onSnapshot,
-  orderBy,
-  query,
-} from "firebase/firestore";
+import { collection, onSnapshot, orderBy, query } from "firebase/firestore";
 import { db } from "../firebase";
+import moment from "moment";
 
 function Home() {
   const [blogs, setBlogs] = useState([]);
   const docRef = collection(db, "blogs");
 
   useEffect(() => {
-    const Queried = query(docRef);
+    const Queried = query(docRef, orderBy("createdAt", "desc"));
 
     onSnapshot(Queried, (snapshot) => {
       let books = [];

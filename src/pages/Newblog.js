@@ -1,5 +1,5 @@
 /** @format */
-import { collection, addDoc } from "firebase/firestore";
+import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import Header from "../components/Header";
 import { auth, db } from "../firebase";
@@ -17,6 +17,7 @@ function Newblog() {
       title: title,
       content: content,
       author: user?.currentUser?.email,
+      createdAt: serverTimestamp(),
     });
     setTitle("");
     setContent("");
@@ -40,6 +41,7 @@ function Newblog() {
           value={content}
           onChange={(e) => setContent(e.target.value)}
         ></textarea>
+
         <button onClick={createBlog}>
           {loading ? "loading...." : "Create"}
         </button>
