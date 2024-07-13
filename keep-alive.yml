@@ -1,0 +1,11 @@
+name: Keep Server Alive
+
+on:
+  schedule:
+    - cron: '*/2 * * * *'  # Runs every 5 minutes
+jobs:
+  keep-alive:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send GET request to keep server alive
+        run: curl -X GET "https://ordermart.onrender.com/"
