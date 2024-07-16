@@ -31,6 +31,7 @@ function Register() {
 
   return (
     <div className="login">
+      
       <input
         type="text"
         placeholder="Email"

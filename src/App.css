@@ -61,15 +61,16 @@ nav a {
 main {
   max-width: 1300px;
   margin: 60px auto;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 20px;
 }
 
 main .blog_item {
   border: 1px solid lightgray;
-  padding: 15px;
+  padding: 10px;
   border-radius: 4px;
+}
+
+main .blog_item .blog_info p {
+  font-size: 20px;
 }
 
 .newblog main {
@@ -81,4 +82,61 @@ main .blog_item {
 
 .newblog main button {
   width: 420px;
+}
+
+.newblog .image_container .upload_image {
+  height: 150px;
+  width: 420px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid grey;
+  border-radius: 4px;
+  margin: 6px 0px;
+  cursor: pointer;
+}
+
+.newblog .image_container .selected_image {
+  height: 150px;
+  width: 420px;
+  object-fit: cover;
+}
+
+main .blog_item {
+  margin: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+main .blog_item .image img {
+  height: 160px;
+  width: 250px;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.blog_item .action_buttons {
+  display: flex;
+  align-items: center;
+}
+
+.blog_item .action_buttons .user_avatar {
+  display: flex;
+  align-items: center;
+}
+
+.blog_item .action_buttons .user_avatar img {
+  height: 40px;
+  width: 40px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-right: 8px;
+}
+
+.blog_item .like_container {
+  margin-left: 8px;
+  display: flex;
+  align-items: center;
 }

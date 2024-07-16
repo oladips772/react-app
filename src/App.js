@@ -10,10 +10,12 @@ import Login from "./pages/Login";
 import PrivateRoute from "./PrivateRoute";
 import Register from "./pages/Register";
 import Newblog from "./pages/Newblog";
+import { Toaster } from "react-hot-toast";
 
 function App() {
   return (
     <div>
+      <Toaster position="top-center" reverseOrder={false} />
       <BrowserRouter>
         <Routes>
           <Route
